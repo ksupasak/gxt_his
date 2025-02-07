@@ -1,0 +1,17 @@
+server:
+  cert_path: "config/cert/cert.pem"
+  cert_path: "config/cert/key.pem"
+  port: 3000
+  host: "127.0.0.1"
+mqtt:
+  host: 'mqtt.pcm-life.com'
+  port: 8883
+  username: "mqttuser"
+  password: "Minadadmin_2010"
+  cert_file: 'config/cert/cert.pem'
+  key_file:  'config/cert/key.pem'
+  ssl: true
+redis:
+  host: '127.0.0.1'
+  port: 6379
+  password: "minadadmin"

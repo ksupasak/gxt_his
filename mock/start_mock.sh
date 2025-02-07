@@ -1,0 +1,1 @@
+puma -b "ssl://0.0.0.0:8001?key=../config/key.pem&cert=../config/cert.pem"

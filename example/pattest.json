@@ -1,0 +1,20 @@
+{
+    "statuscode": 200,
+    "statusmessage": "Get Patient Success!",
+    "data": {
+        "hn": "38-1234",
+        "cid": "1250800212345",
+        "prefix_name": "น.ส.",
+        "fname": "ทดสอบ",
+        "lname": "คอมพิวเตอร์",
+        "prefix_en": "Ms.",
+        "fname_en": "Test",
+        "lname_en": "Computer",
+        "gender": "หญิง",
+        "brithdate": "1970-02-04",
+        "patient_phone": "037-281234",
+        "contact_phone": "087-3214567  086-8298541 (ญาติ)",
+        "address": "23/54 ต.บางคูรัด อ.บางบัวทอง",
+        "nationality": "ไทย"
+    }
+}
