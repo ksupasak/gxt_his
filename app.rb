@@ -77,7 +77,7 @@ before do
   
     client_ip = IPAddr.new(request.ip)
     
-    list = white_list + auth['ip']
+    list = white_list + auth['ip'].collect{|i| IPAddr.new(i)}
     
     unless list.any? { |ip_range| ip_range.include?(client_ip) }
       halt 403, { error: 'Access forbidden' }.to_json
