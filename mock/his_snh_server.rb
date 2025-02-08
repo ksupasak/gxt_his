@@ -59,7 +59,7 @@ def send_patient url, hn
   http.use_ssl = true  # Enable SSL
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   
-  puts "TOKEN #{TOkEN}"  
+  puts "TOKEN #{TOKEN}"  
 
   request = Net::HTTP::Post.new(url, { 'Content-Type' => 'application/json' ,"Authorization" => TOKEN})
   request.body = payload
