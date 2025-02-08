@@ -8,7 +8,7 @@ MQTT_BROKER = 'mqtts://mqtt.pcm-life.com:' # Change to your actual broker addres
 
 MQTT_USERNAME = ENV['MQTT_USERNAME'] || 'mqttuser' # Change to your username
 MQTT_PASSWORD =  ENV['MQTT_PASSWORD'] || '-' # Change to your password
-
+TOKEN = ENV['MQTT_PASSWORD'] || '123457' 
 
 MQTT_SSL_OPTS = {
   host: 'mqtt.pcm-life.com',
@@ -60,7 +60,7 @@ def send_patient url, hn
   http.verify_mode = OpenSSL::SSL::VERIFY_NONE
   
 
-  request = Net::HTTP::Post.new(url, { 'Content-Type' => 'application/json' ,"Authorization" => "123457"})
+  request = Net::HTTP::Post.new(url, { 'Content-Type' => 'application/json' ,"Authorization" => TOKEN})
   request.body = payload
 
   # Send the request
