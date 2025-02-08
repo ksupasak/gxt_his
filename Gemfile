@@ -6,6 +6,7 @@ gem 'openssl'
 gem 'puma'
 gem 'redis'
 gem 'yaml'
+gem 'mqtt'
 
 # Optional development dependencies
 group :development do
