@@ -6,8 +6,8 @@ require 'thread'
 
 MQTT_BROKER = 'mqtts://mqtt.pcm-life.com:' # Change to your actual broker address
 
-MQTT_USERNAME = ENV['username'] || 'mqttuser' # Change to your username
-MQTT_PASSWORD =  ENV['password'] || '-' # Change to your password
+MQTT_USERNAME = ENV['MQTT_USERNAME'] || 'mqttuser' # Change to your username
+MQTT_PASSWORD =  ENV['MQTT_PASSWORD'] || '-' # Change to your password
 
 
 MQTT_SSL_OPTS = {
