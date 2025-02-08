@@ -20,6 +20,7 @@ MQTT_SSL_OPTS = {
   ssl: true
 }
 
+puts MQTT_SSL_OPTS.inspect
 
 # Thread-safe response storage
 responses = {}
