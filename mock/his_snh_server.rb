@@ -8,7 +8,7 @@ MQTT_BROKER = 'mqtts://mqtt.pcm-life.com:' # Change to your actual broker addres
 
 MQTT_USERNAME = ENV['MQTT_USERNAME'] || 'mqttuser' # Change to your username
 MQTT_PASSWORD =  ENV['MQTT_PASSWORD'] || '-' # Change to your password
-TOKEN = ENV['MQTT_PASSWORD'] || '123457' 
+TOKEN = ENV['TOKEN'] || '123457' 
 
 MQTT_SSL_OPTS = {
   host: 'mqtt.pcm-life.com',
