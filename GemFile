@@ -13,3 +13,4 @@ group :development do
   gem 'dotenv' # Manage environment variables
 end
 gem "rackup", "~> 2.2"
+
