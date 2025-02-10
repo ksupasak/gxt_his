@@ -7,7 +7,7 @@ mqtt:
   host: 'mqtt.pcm-life.com'
   port: 8883
   username: "mqttuser"
-  password: "Minadadmin_2010"
+  password: ""
   cert_file: 'config/cert/cert.pem'
   key_file:  'config/cert/key.pem'
   ssl: true
