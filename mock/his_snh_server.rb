@@ -45,7 +45,7 @@ def send_patient url, hn
         "fname_en": nil,
         "lname_en": nil,
         "gender": "ชาย",
-        "brithdate": "1991-07-20",
+        "birth_date": "1991-07-20",
         "patient_phone": nil,
         "contact_phone": "094-8923596",
         "address": "บ.ศรีราชาโชคสำราญ จำกัดเลขที่ 377/85-87",
