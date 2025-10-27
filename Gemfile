@@ -15,3 +15,6 @@ group :development do
 end
 gem "rackup", "~> 2.2"
 
+# gem 'savon'
+
+# gem 'roo'

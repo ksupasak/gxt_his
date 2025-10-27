@@ -5,9 +5,9 @@ class HISFactory
     when "PYTS"
       require_relative 'his_pyts'
       PYTSGateway.new
-    when "SNH"
-      require_relative 'his_snh'
-      SNHGateway.new
+    when "SVH"
+      require_relative 'his_svh'
+      SVHGateway.new
     when "MOCK"
       require_relative 'his_mock'
       MOCKGateway.new

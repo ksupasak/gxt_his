@@ -20,6 +20,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.6.5)
+    mqtt (0.6.0)
     mustermann (3.0.3)
       ruby2_keywords (~> 0.0.1)
     nio4r (2.7.4)
@@ -54,6 +55,7 @@ GEM
       rack-session (>= 2.0.0, < 3)
       tilt (~> 2.0)
     tilt (2.6.0)
+    yaml (0.4.0)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -71,12 +73,14 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   json
+  mqtt
   openssl
   puma
   rackup (~> 2.2)
   redis
   rerun
   sinatra
+  yaml
 
 BUNDLED WITH
    2.5.22

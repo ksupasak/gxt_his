@@ -96,13 +96,17 @@ end
 
 # GET /his/getPatientInfo with Bearer Authentication
 get '/his/getPatientInfo' do
+  puts 'ok'
 
   condition = params[:his]
   
   handler = HISFactory.get_handler(condition)
   result = handler.get_patient_info params
+
+  puts "xxxxxxxxx"
   puts result.inspect 
-  if result['statuscode']==200
+  puts "xxxxxxxxx"
+  if result['statuscode']==200 #&& result[:status]==200
       return result.to_json 
   else
       return params.to_json 
