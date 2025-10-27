@@ -31,17 +31,19 @@ def  get_patient_samit content
 
                  obj =  {:status=>200, 
                  # :s_hn=>shn,
-                 :name=>@doc.xpath('//PAPER_STNAMELINE1').text,
+                 :hn=>@doc.xpath('//PAPMI_NO').text,
+                 :address=>@doc.xpath('//PAPER_STNAMELINE1').text,
                  :prefix=>@doc.xpath('//PAPMI_NAME3').text,
-       
-                 :first_name=>@doc.xpath('//PAPMI_NAME').text, 
-                 :last_name=>@doc.xpath('//PAPMI_NAME2').text, 
-          
+                 :cid=>@doc.xpath('//IDCard').text,
+                 :fname=>@doc.xpath('//PAPMI_NAME').text, 
+                 :lname=>@doc.xpath('//PAPMI_NAME2').text, 
+                 :patient_phone=>@doc.xpath('//PAPER_TELH').text,
+                 :contact_phone=>@doc.xpath('//TELMOBILE').text,
                  :gender=>gender, 
                  :birth_date=>Date.parse(@doc.xpath('//PAPMI_DOB').text).strftime("%d/%m/%Y"),
                  :public_id=>@doc.xpath('//IDCard').text,
                  :contact_country=>@doc.xpath('//CTNAT_Desc').text,
-                 :born_country=>@doc.xpath('//CTNAT_CODE').text
+                 :nationality=>@doc.xpath('//CTNAT_CODE').text
          
           }
         
