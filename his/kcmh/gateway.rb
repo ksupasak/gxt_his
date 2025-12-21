@@ -10,49 +10,6 @@ class KCMHGateway < BaseHandler
   
 
  
-
-# def  get_patient_samit content
-  
-
-#   # content = File.open('getPatientData-result.xml').read
-#    #12-05-000
-#   # puts content
-
-#    require 'date'
-#   @doc = Nokogiri::XML(content)
-
-
-#     gender = '0'
-#     gender = '1' if @doc.xpath('//Gender').text =='0'
-#     gender = '2' if @doc.xpath('//Gender').text =='1'
-    
-
-                 
-#                  eng_name = @doc.xpath('//EngName').text.strip.split
-
-#                  obj =  {:status=>200, 
-#                  # :s_hn=>shn,
-#                  :hn=>@doc.xpath('//PAPMI_NO').text,
-#                  :address=>@doc.xpath('//PAPER_STNAMELINE1').text,
-#                  :prefix=>@doc.xpath('//PAPMI_NAME3').text,
-#                  :cid=>@doc.xpath('//IDCard').text,
-#                  :fname=>@doc.xpath('//PAPMI_NAME').text, 
-#                  :lname=>@doc.xpath('//PAPMI_NAME2').text, 
-#                  :patient_phone=>@doc.xpath('//PAPER_TELH').text,
-#                  :contact_phone=>@doc.xpath('//TELMOBILE').text,
-#                  :gender=>gender, 
-#                  :birth_date=>Date.parse(@doc.xpath('//PAPMI_DOB').text).strftime("%d/%m/%Y"),
-#                  :public_id=>@doc.xpath('//IDCard').text,
-#                  :contact_country=>@doc.xpath('//CTNAT_Desc').text,
-#                  :nationality=>@doc.xpath('//CTNAT_CODE').text
-         
-#           }
-        
-#         return obj
-  
-  
-# end
-
   
   def get_patient_info params
 
@@ -95,15 +52,9 @@ hn="#{params[:hn][-2..-1].to_i}#{format('%06d',params[:hn][0..-3].to_i)}".to_i
 
 puts hn
 
-        # response = client.call(:ws_emr_get_patient, message: { 'strSQL'=> "select * from CUHABS.PT where HN=#{hn}.0   " })
-#	begin
-        response = client.call(:ws_emr_get_patient, message: { 'hn'=> hn ,'user'=> 'emr','Password'=>'1234','IPAddress'=>'170.100.50.10' }) 
-#	rescue Exception => e
-#	  puts e.inspect 
-#	end
-puts 'return '
 
-    puts 'xxx'
+        response = client.call(:ws_emr_get_patient, message: { 'hn'=> hn ,'user'=> 'emr','Password'=>'1234','IPAddress'=>'170.100.50.10' }) 
+
 
 
  begin
@@ -152,11 +103,11 @@ puts 'return '
 
 
           r = o 
-          gender = '1' if r[:p_out_sex]=='M'
-          gender = '2' if r[:p_out_sex]=='F'
+          gender = 'M' if r[:p_out_sex]=='M'
+          gender = 'F' if r[:p_out_sex]=='F'
           shn = thn[2..-1].to_i.to_s+"/"+thn[0..1]
           title = ""
-title = r[:p_out_patient_name][0..r[:p_out_patient_name].index(r[:p_out_fname])-1] if r[:p_out_patient_name].index(r[:p_out_fname])
+          title = r[:p_out_patient_name][0..r[:p_out_patient_name].index(r[:p_out_fname])-1] if r[:p_out_patient_name].index(r[:p_out_fname])
 
 
           obj =  {:status=>200, 
@@ -284,7 +235,28 @@ if present_c_prov.size >=4
 
          puts obj.inspect 
 
-        return obj.to_json
+         res = <<JSONOBJ
+{
+    "statuscode": 200,
+    "statusmessage": "Get Patient Success!",
+    "data": {
+        "hn": "#{obj[:s_hn]}",
+        "cid": "#{obj[:public_id]}",
+        "prefix_name": "#{obj[:prefix]}",
+        "fname": "#{obj[:first_name]}",
+        "lname": "#{obj[:last_name]}",
+        "prefix_en": "#{obj[:prefix_eng]}",
+        "fname_en": "#{obj[:first_name_eng]}",
+        "lname_en": "#{obj[:last_name_eng]}",
+        "gender": "#{obj[:gender]}",
+        "birth_date": "#{obj[:birth_date]}",
+    }
+}
+
+JSONOBJ
+
+
+        return JSON.parse(res)
 
         end
 
