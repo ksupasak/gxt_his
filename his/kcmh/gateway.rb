@@ -254,7 +254,7 @@ if present_c_prov.size >=4
 }
 
 JSONOBJ
-
+puts res
 
         return JSON.parse(res)
 
