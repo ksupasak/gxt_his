@@ -249,7 +249,7 @@ if present_c_prov.size >=4
         "fname_en": "#{obj[:first_name_eng]}",
         "lname_en": "#{obj[:last_name_eng]}",
         "gender": "#{obj[:gender]}",
-        "birth_date": "#{obj[:birth_date]}",
+        "birth_date": "#{obj[:birth_date]}"
     }
 }
 
