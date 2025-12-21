@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  server:
+    image: nginx:alpine
+    container_name: server
+    ports:
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - app
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gxt_his_app
+    # Port 3000 is only accessible within Docker network (via nginx)
+    expose:
+      - "3000"
+    volumes:
+      - .:/app
+      - ./config:/app/config
+    environment:
+      - AUTH=${AUTH:-config/auth.yml}
+      - CONFIG=${CONFIG:-config/config.yml}
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
+
