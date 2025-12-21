@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     container_name: gxt_his_app
     # Port 3000 is only accessible within Docker network (via nginx)
-    expose:
+    ports:
       - "9292:3000"
     volumes:
       - .:/app
