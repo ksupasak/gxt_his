@@ -11,6 +11,9 @@ class HISFactory
     when "MOCK"
       require_relative 'his_mock'
       MOCKGateway.new
+    when "KCMH"
+      require_relative 'kcmh/gateway'
+      KCMHGateway.new
     else
       raise "Unknown handler type: #{his}"
     end

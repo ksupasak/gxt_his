@@ -7,6 +7,7 @@ gem 'puma'
 gem 'redis'
 gem 'yaml'
 gem 'mqtt'
+gem 'savon'
 
 # Optional development dependencies
 group :development do

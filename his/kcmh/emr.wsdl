@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service">
+      <s:element name="WS_emr_GetPatient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="hn" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="idcard" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_emr_GetPatientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_emr_GetPatientResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_EMR_PTIMAGE">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HN" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="WS_EMR_PTIMAGEResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WS_EMR_PTIMAGEResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="WS_emr_GetPatientSoapIn">
+    <wsdl:part name="parameters" element="tns:WS_emr_GetPatient" />
+  </wsdl:message>
+  <wsdl:message name="WS_emr_GetPatientSoapOut">
+    <wsdl:part name="parameters" element="tns:WS_emr_GetPatientResponse" />
+  </wsdl:message>
+  <wsdl:message name="WS_EMR_PTIMAGESoapIn">
+    <wsdl:part name="parameters" element="tns:WS_EMR_PTIMAGE" />
+  </wsdl:message>
+  <wsdl:message name="WS_EMR_PTIMAGESoapOut">
+    <wsdl:part name="parameters" element="tns:WS_EMR_PTIMAGEResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="WS_emr_GetPatient">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">ตรวจสอบข้อมูลผู้ป่วยที่ได้จากโรงพยาบาล</wsdl:documentation>
+      <wsdl:input message="tns:WS_emr_GetPatientSoapIn" />
+      <wsdl:output message="tns:WS_emr_GetPatientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="WS_EMR_PTIMAGE">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">ดึงข้อมูลรูปผู้ป่วย ที่ระบุตาม HN </wsdl:documentation>
+      <wsdl:input message="tns:WS_EMR_PTIMAGESoapIn" />
+      <wsdl:output message="tns:WS_EMR_PTIMAGESoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WS_emr_GetPatient">
+      <soap:operation soapAction="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service/WS_emr_GetPatient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_EMR_PTIMAGE">
+      <soap:operation soapAction="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service/WS_EMR_PTIMAGE" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="WS_emr_GetPatient">
+      <soap12:operation soapAction="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service/WS_emr_GetPatient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WS_EMR_PTIMAGE">
+      <soap12:operation soapAction="http://cuhapp.chulalongkornhospital.go.th/WS_EMR/Service/WS_EMR_PTIMAGE" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://10.35.203.10/WS_EMR/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://10.35.203.10/WS_EMR/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
