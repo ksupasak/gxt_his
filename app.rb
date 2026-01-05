@@ -165,6 +165,9 @@ end
 # Authentication helper method
 def authenticate! auth_map
   provided_token = request.env['HTTP_AUTHORIZATION']&.split('Bearer ')&.last
+  puts "provide token #{provided_token}"
+  puts auth_map.inspect 
+
   halt 401, { error: 'Unauthorized' }.to_json unless auth_map[provided_token]
   return auth_map[provided_token]
 end
