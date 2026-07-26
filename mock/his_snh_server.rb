@@ -12,7 +12,7 @@ TOKEN = ENV['TOKEN'] || '123457'
 
 MQTT_SSL_OPTS = {
   host: 'mqtt.pcm-life.com',
-  port: 8883, # MQTT over TLS
+  port: 58883, # MQTT over TLS
   username: MQTT_USERNAME,
   password: MQTT_PASSWORD,
   cert_file: '../config/cert/cert.pem',
