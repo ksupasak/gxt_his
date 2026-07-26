@@ -8,6 +8,9 @@ class HISFactory
     when "SVH"
       require_relative 'his_svh'
       SVHGateway.new
+    when "SNH"
+      require_relative 'his_snh'
+      SNHGateway.new  
     when "MOCK"
       require_relative 'his_mock'
       MOCKGateway.new
